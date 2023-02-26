@@ -1,0 +1,56 @@
+--Part 1
+CREATE TABLE Customers (
+	ID int NOT NULL,
+    CustomerName varchar(255) NOT NULL,
+    ContactName varchar(255),
+    Address varchar(255),
+    City varchar(255) NOT NULL,
+    PostalCode varchar(225),
+    Country varchar(255) NOT NULL,
+    PRIMARY KEY(ID)
+);
+
+
+--Part 2
+INSERT INTO Customers (ID, CustomerName, ContactName, Address, City, PostalCode, Country) VALUES (1, Jim Moore, James Moore, Frederick Street, Berlin, 12209, Germany);
+
+INSERT INTO Customers (ID, CustomerName, ContactName, Address, City, PostalCode, Country) VALUES (2, 'Jane Smith', 'Jane Smith', 'Kevin Street', 'Mexico D.F.', '12207', 'Mexico');
+
+INSERT INTO Customers (ID, CustomerName, ContactName, Address, City, PostalCode, Country) VALUES (3, 'Lucille Connors', 'Lucille Connors', 'Tpwnsend Street', 'Mexico D.F.', '12207', 'Mexico');
+
+INSERT INTO Customers (ID, CustomerName, ContactName, Address, City, PostalCode, Country) VALUES (4, 'Phil Nolan', 'Philip Nolan', 'Sundale Road', 'London', 'WA1 1DP', 'UK');
+
+INSERT INTO Customers (ID, CustomerName, ContactName, Address, City, PostalCode, Country) VALUES (5, 'Veronica Green', 'Veronica Green', 'Shipyard Lane', 'Lulea', 'S958 22', 'Sweden');
+
+--Part 3
+SELECT * FROM Customers;
+
+--Part 4
+SELECT DISTINCT Country FROM Customers;
+
+--Part 5
+SELECT * FROM `Customers` WHERE City = 'Berlin';
+
+--Part 6
+SELECT * FROM `Customers` WHERE City = 'Berlin' AND PostalCode = '12209';
+
+--Part 7
+SELECT * FROM `Customers` ORDER BY City;
+
+--Part 8
+INSERT INTO Customers (ID, CustomerName, City, Country) VALUES (6, 'Cardinal', 'Stavanger', 'Norway');
+
+--Part 9
+SELECT * FROM Customers WHERE PostalCode IS NULL;
+
+--Part 10
+SELECT * FROM Customers WHERE PostalCode IS NOT NULL;
+
+--Part 11
+UPDATE Customers SET CustomerName = 'John Smith' WHERE Country = 'UK';
+
+--Part 12
+DELETE FROM Customers WHERE PostalCode = '12209';
+
+--Part 13
+SELECT DISTINCT Country FROM Customers WHERE Country LIKE '%e%' ORDER BY Country;
