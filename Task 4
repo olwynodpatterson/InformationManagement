@@ -1,0 +1,68 @@
+--Create the below two tables called Bookings and CustomersT4 with the appropriate date types, primary and foreign keys
+
+--Insert the above data into the Customers table, followed by the Bookings table
+
+CREATE TABLE Bookings (
+	BookingID int NOT NULL,
+    CustomerID int NOT NULL,
+    BookingDate DATE,
+    PRIMARY KEY(BookingID)
+);
+
+INSERT INTO Bookings (BookingID, CustomerID, BookingDate) VALUES (10308, 2, '1996-09-18');
+
+INSERT INTO Bookings (BookingID, CustomerID, BookingDate) VALUES (10309, 1, '1996-09-19');
+
+INSERT INTO Bookings (BookingID, CustomerID, BookingDate) VALUES (10310, 2, '1996-09-20');
+
+INSERT INTO Bookings (BookingID, CustomerID, BookingDate) VALUES (10311, 3, '1996-09-19');
+
+INSERT INTO Bookings (BookingID, CustomerID, BookingDate) VALUES (10312, 2, '2026-09-20');
+
+CREATE TABLE Customers (
+    CustomerID int NOT NULL,
+    CustomerName varchar(255) NOT NULL,
+    ContactName varchar(255),
+    Country varchar(255),
+    PRIMARY KEY(CustomerID)
+);
+
+INSERT INTO Customers (CustomerID, CustomerName, ContactName, Country) VALUES (1, 'Alfreds Futterkiste', 'Maria Anders', 'Germany');
+
+INSERT INTO Customers (CustomerID, CustomerName, ContactName, Country) VALUES (2, 'Ana Trujillo Emparedados y helados', 'Ana Trujillo', 'Mexico');
+
+INSERT INTO Customers (CustomerID, CustomerName, ContactName, Country) VALUES (3, 'Antonio Moreno Taqería', 'Antonio Moreno', 'Mexico');
+
+
+--Return all data in the Bookings table.
+SELECT * from Bookings;
+
+--Select all values in the BookingDate column in the Bookings table.
+SELECT BookingDate from Bookings;
+
+--Select all information about Customers in the Customers table who live in Mexico.
+SELECT * from CustomersT4 WHERE Country = 'Mexico';
+
+--Select the BookingID of all Bookings that took place on 18th September 1996.
+SELECT BookingID from Bookings WHERE BookingDate = '1996-09-18';
+
+--Select the CustomerNames of all Customers whose order date is 18th September 1996.
+SELECT CustomersT4.CustomerName from Bookings 
+INNER JOIN CustomersT4 ON Bookings.CustomerID=CustomersT4.CustomerID
+WHERE BookingDate = '1996-09-18';
+
+--Select the ContactNames of all Customers who ordered a product before 19th September 1996
+SELECT CustomersT4.ContactName from Bookings 
+INNER JOIN CustomersT4 ON Bookings.CustomerID=CustomersT4.CustomerID
+WHERE BookingDate < '1996-09-19';
+
+--Select the BookingID of all Bookings that took place prior to today’s date.
+SELECT BookingID from Bookings 
+WHERE BookingDate < CURRENT_TIMESTAMP;
+
+--Select the ContactNAme of all Customers whose BookingDate is after today’s date.
+SELECT CustomersT4.ContactName from Bookings 
+INNER JOIN CustomersT4 ON Bookings.CustomerID=CustomersT4.CustomerID
+WHERE BookingDate > CURRENT_TIMESTAMP;
+ 
+
